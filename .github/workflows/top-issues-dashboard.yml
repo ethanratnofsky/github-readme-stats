@@ -4,6 +4,20 @@ on:
     - cron: "0 0 */3 * *"
   workflow_dispatch:
 
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  deployments: read
+  issues: write
+  discussions: read
+  packages: read
+  pages: read
+  pull-requests: write
+  repository-projects: read
+  security-events: read
+  statuses: read
+
 jobs:
   showAndLabelTopIssues:
     if: github.repository == 'anuraghazra/github-readme-stats'
@@ -15,6 +29,7 @@ jobs:
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         with:
+          top_list_size: 10
           filter: "1772"
           label: true
           dashboard: true
